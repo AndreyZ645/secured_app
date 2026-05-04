@@ -55,11 +55,11 @@ public class JwtService {
             long jwtExpiration) {
         return Jwts
                 .builder()
-                .setClaims(extraClaims)
+                .claims(extraClaims)
                 .subject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
-                .signWith(getSignInKey(), SignatureAlgorithm.ES256)
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + jwtExpiration))
+                .signWith(getSignInKey())
                 .compact();
     }
 
